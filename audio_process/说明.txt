@@ -1,0 +1,21 @@
+文件名,说明
+analysis.py,用于测试，没有导出的函数
+masr_rec.py,提供masr离线识别功能，但建议先安装ctcdecode及语言模型，不然准确率会有所下降
+audio_cut.py,提供裁剪音频的工具，需要有较准确的时间，不然不必使用
+audio_extract.py,提供从视频中提取音频（可以输出无声视频）和将音频合成到视频的函数，还提供了视频裁剪的函数，并未在process_exp中使用，此外，这些函数均会将输入视频的长度作为返回值
+audio_record.py,录音，这个文件提供命令行参数选项，一定情况下可以用pyinstaller转exe使用
+audio_splice.py,提供两个函数：1、将文件夹下文件名转换为列表（全数字名，并排序）2、输入文件列表和需要的时长，将音频按顺序拼接到尽量接近该时长，处理前置是句子分割和文件列表化
+baiduSR.py,提供百度api语音识别功能，需要在conf文件中写密钥，实际用到的就是先声明，再用它的rec方法，既有返回值也能文件输出，实际使用中网络延迟会减慢速度 ,此外其并发数也有限制，但是准确度相比离线模型会更高
+indexlist.py,提供一个获取文件夹下每个音频开始和持续时间的函数，保存到另一个文件夹下
+savetool.py,提供一个保存语音识别结果的工具，api和离线模型两种方式使用不同函数
+speech_segmentation.py,提供BIC句子分割的功能，主要用到其.multi_segmentation方法，已经给出示例
+speedchange.py,变速工具，使用ffmpeg，可以把重录制、tts生成的音频调整到与原音频一致的长度，提供了一步步来的方法和一个封装好直接用的方法
+tts_make.py,提供使用语音合成工具合成语音的方法，一个是生成音频文件，一个是直接说
+voice_extract.py,需要安装spleeter工具，提供分离背景音和mp3转wav的方法（这个函数同时支持mp3转wav和采样率变换，所以输入wav文件也可以），如果运行失败，首先考虑重新安装模型（模型会出错，出错后可能只能重新安装才能再次使用），如果提示'已杀死/killed'，说明用户的gpu算力不支持此文件（文件较大时）的运算，考虑先进行分割再处理。
+red_time.py,在音频末尾添加空白的工具，只使用第一个函数即可，后二个一般都不需要使用，除非需要自己写其它功能
+sub_append.py,给视频添加字幕的工具，使用其中sub_append函数即可
+voice_activity_detect.py,speech_segmentation.py的依赖文件，不需要使用
+vq_lbg.py,speech_segmentation.py的依赖文件，不需要使用
+beamdecode.py,masr_rec使用语言模型时的依赖文件，不需要使用
+feature.py,masr_rec的依赖文件，不需要使用
+ ,无论如何，ffmpeg和一些python库是必须的（python3.7）

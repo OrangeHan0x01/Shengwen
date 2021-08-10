@@ -1,0 +1,8 @@
+环境：python3.7/3.8，3.6版本未经测试
+*推荐使用anaconda的python环境
+
+额外软件环境：
+ffmpeg(必需，音视频格式转换工具，变速工具)
+cuda,cudnn（要使用gpu加速pytorch离线模型运行时需要）
+spleeter（语音去噪时需要）
+ImageMagick （添加字幕到视频时需要）http://www.imagemagick.org/script/download.php
