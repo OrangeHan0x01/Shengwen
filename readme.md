@@ -48,3 +48,4 @@ process_exp.py提供了可供快速上手的示例和说明，如果需要修改
 BIC语音分割：https://github.com/zheyejs/speech_seg
 	由于部分库的更新，原本一些函数无法在我使用的python及这些库版本下运行，因此我修改了一些代码，引入了新的库来更换原本的函数。
 
+如果只是要简单地给自己的视频自动添加字幕，使用提供的例程即可实现，演示视频：https://www.bilibili.com/video/BV1Sw411d7ea
