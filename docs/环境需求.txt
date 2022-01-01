@@ -6,3 +6,5 @@ ffmpeg(必需，音视频格式转换工具，变速工具)
 cuda,cudnn（要使用gpu加速pytorch离线模型运行时需要）
 spleeter（语音去噪时需要）
 ImageMagick （添加字幕到视频时需要）http://www.imagemagick.org/script/download.php
+#以上软件在ubuntu内除cuda，cudnn外都会用安装脚本自动安装
+paddlepaddle+paddlespeech（使用paddlespeech模型时需要）：paddlespeech直接用pip安装，paddlepaddle需要在官网找适合自己系统及cuda版本的来安装
