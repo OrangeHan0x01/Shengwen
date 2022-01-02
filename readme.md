@@ -11,7 +11,7 @@
 示例：
 安装完成后，修改simple_expbypd.py中的in_pth，out_pth，audio_pth，out_video，运行
 
-$python simple_expbypd.py
+	$python simple_expbypd.py
 
 ，即可将自己的视频自动加入字幕，此外，包括字幕形状颜色大小、语音分割等都能够设置不同参数
 
@@ -44,8 +44,8 @@ process_exp.py提供了可供快速上手的示例和说明，如果需要修改
 
 离线语音识别模型：https://github.com/nobody132/masr
 
-	我增加了一个fine-tune的代码文件，可在代替原本训练代码文件后实现微调模型适配下游任务的功能。
+我增加了一个fine-tune的代码文件，可在代替原本训练代码文件后实现微调模型适配下游任务的功能。
 	
 BIC语音分割：https://github.com/zheyejs/speech_seg
 
-	由于部分库的更新，原本一些函数无法在我使用的python及这些库版本下运行，因此我修改了一些代码，引入了新的库来更换原本的函数。
+由于部分库的更新，原本一些函数无法在我使用的python及这些库版本下运行，因此我修改了一些代码，引入了新的库来更换原本的函数。
