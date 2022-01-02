@@ -9,7 +9,11 @@
 如果要用masr离线模型识别,你还需要下载masr项目及预训练模型放到对应文件夹中，你可能还需要安装语言模型，请查看masr的说明。我原本为masr准备了一个微调模型的文件，但用处不大故没放进github版。
 
 示例：
-安装完成后，修改simple_expbypd.py中的in_pth，out_pth，audio_pth，out_video，运行$python simple_expbypd.py，即可将自己的视频自动加入字幕，此外，包括字幕形状颜色大小、语音分割等都能够设置不同参数
+安装完成后，修改simple_expbypd.py中的in_pth，out_pth，audio_pth，out_video，运行
+
+$python simple_expbypd.py
+
+，即可将自己的视频自动加入字幕，此外，包括字幕形状颜色大小、语音分割等都能够设置不同参数
 
 稍微麻烦点的介绍：
 #按步骤划分的主要功能：
