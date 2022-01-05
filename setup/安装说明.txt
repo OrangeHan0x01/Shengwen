@@ -1,21 +1,19 @@
 (由于部分文件是某些非必需功能的组件，且部分文件在国内网络环境下安装较慢或会出错，需要手动进行网络配置的修改。因此在说明中写了些注意事项)
 需要的python版本：3.7或3.8，建议在anaconda中运行
-安装：如果不需要离线识别功能，只需要执行sudo sh ./install.sh。自动安装前请确认本地3.7/3.8版本的pip命令是'pip3'而不是'pip'，否则应当修改安装脚本。
+安装：只需要执行sudo sh ./install.sh。自动安装前请确认本地3.7/3.8版本的pip命令是'pip3'而不是'pip'，否则应当修改安装脚本。
 	运行脚本过程需要较长时间，且当网络状况不佳时可能会在pip安装时出错，需要多次执行脚本中pip的命令或者进行换源
 	ubuntu下字幕合成时由于moviepy的支持会发生找不到ImageMagick的问题，请找到/etc/ImageMagick-6/policy.xml文件，将其中的<policy domain="path" rights="none" pattern="@*" />一行注释变成<!--<policy domain="path" rights="none" pattern="@*" /> -->
 	安装完成后，请修改process_exp.py或者simple_exp.py的文件名和文件夹，对你的视频进行测试！
-github上传版本不自带模型，请从离线语音识别模型项目：https://github.com/nobody132/masr    处下载语音识别模型pth文件放在masr/pretrained下，修改conf文件中的路径，并从spleeter下载2stems.tar.gz文件放置在setup文件夹下，如不需要噪音人声分离功能，可以从install.sh中移除最后几行与2stems有关的命令
-
-手动安装后，可能需要修改general_config.conf文件，设置参数
+	如不需要噪音人声分离功能，可以从install.sh中移除最后几行与2stems有关的命令
+	安装后，如需要百度api在线识别功能需要修改general_config.conf文件，设置参数
 
 
 脚本说明：
 install.sh：用于安装项目必需的文件，如果运行失败，可能是由于我们在windows下编辑过，请在setup文件夹下执行命令：sed -i 's/\r$//' install.sh
-lm_install.sh：用于安装离线模型的语言模型，如果只使用网络识别，则不需要。此外，由于安装需要的依赖较多，且对网络环境要求较高，建议手动安装或是使用网络识别
 spleeter_repair.sh：如果spleeter在用过几次后出错，可能是由于tensorflow在模型处理中出错，会导致模型损坏。可以用该脚本修复--实际就是重新解压模型
 
 *注意，pip安装需求库时，由于部分库的体量较大，可能导致库安装失败，如遇到错误，请多次执行pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple语句、改善网络环境、调整pip下载的源来解决
-*nvidia驱动、cuda,cudnn：默认用户已安装，否则需要自行在nvidia官网上找适合自己内核、显卡的较新版本进行安装，但如果用户希望使用百度语音api进行识别，则不需要安装这些项目。 如果使用的不是nvidia显卡，用户可能需要安装opencl进行离线模型识别的加速
+*nvidia驱动、cuda,cudnn：默认用户已安装，否则需要自行在nvidia官网上找适合自己内核、显卡的较新版本进行安装，但如果用户希望使用百度语音api进行识别，则不需要安装这些项目。 如果使用的不是nvidia显卡，用户可能需要安装opencl进行离线模型识别的加速，注意install脚本中默认安装的是paddlepaddle的cpu-linux版本，如需要gpu版本，请自行前往官网安装
 *手动编译audio_record.py:如果用户需要手动编译audio_record为一个能在相同平台下使用（供用户使用）的可执行文件，请安装pyinstaller，并在audio_process目录下用pyinstaller -F audio_record.py进行编译
 
 
