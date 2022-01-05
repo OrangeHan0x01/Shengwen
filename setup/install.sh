@@ -5,6 +5,7 @@ sudo apt-get -y install python3-pyaudio
 sudo apt-get -y install imagemagick
 sudo apt-get -y install ffmpeg
 cd ..
+python -m pip install paddlepaddle==2.2.1 -i https://mirror.baidu.com/pypi/simple
 pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 wget http://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz
