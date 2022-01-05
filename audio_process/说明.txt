@@ -1,6 +1,5 @@
 文件名,说明
 analysis.py,用于测试，没有导出的函数
-masr_rec.py,提供masr离线识别功能，但建议先安装ctcdecode及语言模型，不然准确率会有所下降
 audio_cut.py,提供裁剪音频的工具，需要有较准确的时间，不然不必使用
 audio_extract.py,提供从视频中提取音频（可以输出无声视频）和将音频合成到视频的函数，还提供了视频裁剪的函数，并未在process_exp中使用，此外，这些函数均会将输入视频的长度作为返回值
 audio_record.py,录音，这个文件提供命令行参数选项，一定情况下可以用pyinstaller转exe使用
@@ -16,8 +15,6 @@ red_time.py,在音频末尾添加空白的工具，只使用第一个函数即�
 sub_append.py,给视频添加字幕的工具，使用其中sub_append函数即可
 voice_activity_detect.py,speech_segmentation.py的依赖文件，不需要使用
 vq_lbg.py,speech_segmentation.py的依赖文件，不需要使用
-beamdecode.py,masr_rec使用语言模型时的依赖文件，不需要使用
-feature.py,masr_rec的依赖文件，不需要使用
  ,无论如何，ffmpeg和一些python库是必须的（python3.7）
 
 #2022年1月2日新增：
