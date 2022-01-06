@@ -56,7 +56,7 @@ alist = audio_splice.dir2list('spliced_audio/')
 indexlist.indexlist('test_output/',alist)#注意，indexlist生成的音频开始时间和持续时间均为保留两位小数
 
 #使用百度语音api识别，同时生成字幕文件
-SRmodel=SR.BaiduSR()#如果是使用masr离线模型识别，去掉
+SRmodel=SR.BaiduSR()#如果是使用离线模型识别，去掉
 stool=st.savetool(out_pth+'subtitle.txt')#初始化存储工具对象，并指定文件存储目标，如果已有该文件，则内容会覆盖
 try:
 	rtool=st.readtool('test_output/index_list.txt')
