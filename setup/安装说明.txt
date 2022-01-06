@@ -2,9 +2,9 @@
 需要的python版本：3.7或3.8，建议在anaconda中运行
 安装：只需要执行sudo sh ./install.sh。自动安装前请确认本地3.7/3.8版本的pip命令是'pip3'而不是'pip'，否则应当修改安装脚本。
 	运行脚本过程需要较长时间，且当网络状况不佳时可能会在pip安装时出错，需要多次执行脚本中pip的命令或者进行换源
-	ubuntu下字幕合成时由于moviepy的支持会发生找不到ImageMagick的问题，请找到/etc/ImageMagick-6/policy.xml文件，将其中的<policy domain="path" rights="none" pattern="@*" />一行注释变成<!--<policy domain="path" rights="none" pattern="@*" /> -->
-	安装完成后，请修改process_exp.py或者simple_exp.py的文件名和文件夹，对你的视频进行测试！
-	如不需要噪音人声分离功能，可以从install.sh中移除最后几行与2stems有关的命令
+	ubuntu下字幕合成时由于moviepy的支持可能会发生找不到ImageMagick的问题，请找到/etc/ImageMagick-6/policy.xml文件，将其中的<policy domain="path" rights="none" pattern="@*" />一行注释掉，变成<!--<policy domain="path" rights="none" pattern="@*" /> -->
+	安装完成后，请修改process_exp.py或者simple_expbypd.py中的文件名和文件夹，对你的视频进行测试！
+	如不需要噪音人声分离功能，可以从install.sh中移除最后几行与2stems有关的命令（这个是spleeter需要使用的模型文件）
 	安装后，如需要百度api在线识别功能需要修改general_config.conf文件，设置参数
 
 
@@ -13,11 +13,14 @@ install.sh：用于安装项目必需的文件，如果运行失败，可能是�
 spleeter_repair.sh：如果spleeter在用过几次后出错，可能是由于tensorflow在模型处理中出错，会导致模型损坏。可以用该脚本修复--实际就是重新解压模型
 
 *注意，pip安装需求库时，由于部分库的体量较大，可能导致库安装失败，如遇到错误，请多次执行pip3 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple语句、改善网络环境、调整pip下载的源来解决
-*nvidia驱动、cuda,cudnn：默认用户已安装，否则需要自行在nvidia官网上找适合自己内核、显卡的较新版本进行安装，但如果用户希望使用百度语音api进行识别，则不需要安装这些项目。 如果使用的不是nvidia显卡，用户可能需要安装opencl进行离线模型识别的加速，注意install脚本中默认安装的是paddlepaddle的cpu-linux版本，如需要gpu版本，请自行前往官网安装
+*nvidia驱动、cuda,cudnn：默认用户已安装，否则需要自行在nvidia官网上找适合自己内核、显卡的较新版本进行安装，但如果用户希望使用百度语音api进行识别或离线模型用cpu运算，则不需要安装这些项目。 如果使用的不是nvidia显卡，用户可能需要安装opencl进行离线模型识别的加速，注意install脚本中默认安装的是paddlepaddle的cpu-linux版本，如需要gpu版本，请自行前往官网安装
+
 *手动编译audio_record.py:如果用户需要手动编译audio_record为一个能在相同平台下使用（供用户使用）的可执行文件，请安装pyinstaller，并在audio_process目录下用pyinstaller -F audio_record.py进行编译
 
 
-给windows用户--你需要安装哪些工具：
-nvidia驱动、cuda,cudnn（使用离线模型识别需要这三件工具）
-spleeter、imagemagick、ffmpeg
-python3.7/3.8
+给windows用户--你需要手动安装哪些工具：
+python3.7/3.8（必需）
+imagemagick、ffmpeg（视频处理必需）
+spleeter（如果要使用背景音分离功能则需要）
+paddlepaddle（离线模型识别则需要）
+nvidia驱动、cuda,cudnn（使用离线模型识别时有这三件工具才可以进行gpu加速，否则只能cpu运算）
