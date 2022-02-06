@@ -19,3 +19,5 @@ vq_lbg.py,speech_segmentation.py的依赖文件，不需要使用
 
 #2022年1月2日新增：
 pdrec.py,提供基于paddlespeech和paddlepaddle的语音识别和语音翻译（英译中）函数，直接和原本的识别函数等价替换即可（注意，第一次使用会自动下载预训练模型）
+#2022年2月7日新增：
+subgui.py,提供基于pyqt的字幕gui功能，窗口透明（只有字幕）且默认置于窗口最前排。
