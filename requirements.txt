@@ -17,3 +17,4 @@ tqdm==4.50.1
 moviepy==1.0.3
 requests==2.21.0
 paddlespeech==0.1.0
+PyQt5==5.15.2
