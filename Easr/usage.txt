@@ -1,0 +1,33 @@
+说明：
+这里对原本的paddlespeech进行了修改（请参照此项目中使用的paddlespeech版本），目的是减少多余的控制台输出，分离模型加载与识别，从而提高识别效率，最终目的是更好地支持音频流识别
+请把这个文件夹中内容替换到paddlespeech/cli文件夹中，应该就能使用了。
+使用示例：这个例子对比了正常模型和easr模型的时间消耗，注意这里用的是英文识别
+
+import paddle
+from paddlespeech.cli import EasrExecutor
+import audio_process.pdrec as pd
+import time
+
+
+def pd_easr(file):#中文语音识别
+	start=time.time()
+	asr_executor = EasrExecutor()
+	asr_executor.model='transformer_librispeech'
+	asr_executor.lang='en'
+	asr_executor.input=file
+	#EasrExecutor(model='transformer_librispeech',lang='en',sample_rate=16000,config=None,ckpt_path=None,audio_file=file,force_yes=False,device=paddle.get_device())
+	asr_executor.init_model()
+	now=time.time()
+	print('[+]init_time:',now-start)
+	text=asr_executor.exe_audio_file(file)
+	print('[+]infer_time:',time.time()-now)
+	print('识别结果：',text)
+
+start=time.time()
+pd.pd_asr('16.wav',tgt_lang='en')
+now=time.time()
+print('[+]first_time:',now-start)
+pd.pd_asr('16.wav',tgt_lang='en')
+print('[+]second_time:',time.time()-now)
+
+pd_easr('16.wav')#easr识别
